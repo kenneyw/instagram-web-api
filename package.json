@@ -7,7 +7,7 @@
   "repository": "jlobos/instagram-web-api",
   "author": "Jesus Lobos <jlobitu@gmail.com> (https://jlobos.com)",
   "scripts": {
-    "test": "xo && ava",
+    "test": "xo && ava --color",
     "precommit": "lint-staged"
   },
   "files": [
