@@ -15,15 +15,19 @@ test.before(async () => {
 
 test('authentication', t => {
   t.is(authentication.status, 'ok')
-  t.is(client.authentication.status, 'ok')
   t.is(client.credentials.username, username)
   t.is(client.credentials.password, password)
   t.true(authentication.authenticated)
   t.true(Array.isArray(client.credentials.cookies))
 })
 
+test('re-login', async (t) => {
+  authentication = await client.login()
+  t.is(authentication.status, 'ok')
+})
+
 // TODO: fix this
-// 
+//
 // test('getHome', async t => {
 //   const user = await client.getHome()
 //
