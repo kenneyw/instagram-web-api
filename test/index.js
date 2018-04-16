@@ -1,4 +1,4 @@
-import test from 'ava'
+import { serial as test } from 'ava';
 import Instagram from '../lib'
 import { media, users, locations, tags } from './helpers'
 
@@ -15,6 +15,7 @@ test.before(async () => {
 
 test('authentication', t => {
   t.is(authentication.status, 'ok')
+  t.is(client.authentication.status, 'ok')
   t.is(client.credentials.username, username)
   t.is(client.credentials.password, password)
   t.true(authentication.authenticated)
@@ -22,7 +23,7 @@ test('authentication', t => {
 })
 
 // TODO: fix this
-
+// 
 // test('getHome', async t => {
 //   const user = await client.getHome()
 //
@@ -85,10 +86,11 @@ test('getMediaFeedByHashtag', async t => {
 })
 
 test('getMediaFeedByUserId', async t => {
-  const { count } = await client.getMediaFeedByUserId({
+  const body = await client.getMediaFeedByUserId({
     userId: users.Instagram.id
   })
-  t.truthy(count)
+  const { count } = body;
+  t.truthy(count);
 })
 
 test('locationSearch', async t => {
