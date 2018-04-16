@@ -90,11 +90,10 @@ test('getMediaFeedByHashtag', async t => {
 })
 
 test('getMediaFeedByUserId', async t => {
-  const body = await client.getMediaFeedByUserId({
+  const { count } = await client.getMediaFeedByUserId({
     userId: users.Instagram.id
   })
-  const { count } = body;
-  t.truthy(count);
+  t.truthy(count)
 })
 
 test('locationSearch', async t => {
