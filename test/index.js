@@ -1,4 +1,4 @@
-import test from 'ava'
+import { serial as test } from 'ava';
 import Instagram from '../lib'
 import { media, users, locations, tags } from './helpers'
 
@@ -21,8 +21,13 @@ test('authentication', t => {
   t.true(Array.isArray(client.credentials.cookies))
 })
 
-// TODO: fix this
+test('re-login', async (t) => {
+  authentication = await client.login()
+  t.is(authentication.status, 'ok')
+})
 
+// TODO: fix this
+//
 // test('getHome', async t => {
 //   const user = await client.getHome()
 //
